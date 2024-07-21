@@ -40,19 +40,14 @@ internal static class HostingExtensions
             .AddGoogle("Google", options =>
             {
                 options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                // register your IdentityServer with Google at https://console.developers.google.com
-                // enable the Google+ API
-                // set the redirect URI to https://localhost:5001/signin-google
-                options.ClientId = "";
-                options.ClientSecret = ""; 
+                //options.ClientId = "";
+                //options.ClientSecret = ""; 
             })
             .AddYandex("Yandex", options =>
             {
                 options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                // register your IdentityServer with Google at https://console.developers.google.com
-                options.ClientId = "";
-                options.ClientSecret = "";
-                //options. = "https://localhost:5001";
+                //options.ClientId = "";
+                //options.ClientSecret = "";
             });
 
         return builder.Build();
