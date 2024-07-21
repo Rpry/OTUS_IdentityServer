@@ -36,7 +36,19 @@ internal static class HostingExtensions
             .AddInMemoryClients(Config.Clients)
             .AddAspNetIdentity<ApplicationUser>();
 
-        builder.Services.AddAuthentication();
+        builder.Services.AddAuthentication()
+            .AddGoogle("Google", options =>
+            {
+                options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                options.ClientId = "894290498729-h5h5bptoiq2fmlif6e57nbqokhp9brt8.apps.googleusercontent.com";
+                options.ClientSecret = ""; 
+            })
+            .AddYandex("Yandex", options =>
+            {
+                options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                options.ClientId = "9031b53b628a4dd49c4a1396f5b01604";
+                options.ClientSecret = "";
+            });
 
         return builder.Build();
     }
