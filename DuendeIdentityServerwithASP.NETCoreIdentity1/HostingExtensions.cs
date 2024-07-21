@@ -44,14 +44,14 @@ internal static class HostingExtensions
                 // enable the Google+ API
                 // set the redirect URI to https://localhost:5001/signin-google
                 options.ClientId = "894290498729-h5h5bptoiq2fmlif6e57nbqokhp9brt8.apps.googleusercontent.com";
-                options.ClientSecret = ""; 
+                options.ClientSecret = null; 
             })
             .AddYandex("Yandex", options =>
             {
                 options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
                 // register your IdentityServer with Google at https://console.developers.google.com
                 options.ClientId = "9031b53b628a4dd49c4a1396f5b01604";
-                options.ClientSecret = "";
+                options.ClientSecret = null;
                 //options. = "https://localhost:5001";
             });
 
