@@ -55,6 +55,15 @@ internal static class HostingExtensions
                 //options. = "https://localhost:5001";
             });
 
+        // Add Cors
+        builder.Services.AddCors(o => o.AddPolicy("Cors", builder =>
+        {
+            builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        }));
+        
+        
         return builder.Build();
     }
 
@@ -66,6 +75,13 @@ internal static class HostingExtensions
         {
             app.UseDeveloperExceptionPage();
         }
+        
+        app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+
+        app.UseHttpsRedirection(); 
 
         app.UseStaticFiles();
         app.UseRouting();
