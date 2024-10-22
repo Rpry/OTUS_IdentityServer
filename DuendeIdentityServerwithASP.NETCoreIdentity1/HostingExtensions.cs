@@ -1,6 +1,8 @@
 using Duende.IdentityServer;
+using Duende.IdentityServer.Services;
 using DuendeIdentityServerwithASP.NETCoreIdentity1.Data;
 using DuendeIdentityServerwithASP.NETCoreIdentity1.Models;
+using DuendeIdentityServerwithASP.NETCoreIdentity1.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -63,7 +65,7 @@ internal static class HostingExtensions
                 .AllowAnyHeader();
         }));
         
-        
+        builder.Services.AddTransient<IProfileService, ProfileService>();
         return builder.Build();
     }
 
