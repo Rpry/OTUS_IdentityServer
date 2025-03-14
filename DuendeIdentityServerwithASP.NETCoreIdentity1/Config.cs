@@ -11,12 +11,54 @@ public static class Config
             new IdentityResources.OpenId(),
             new IdentityResources.Profile(),
             new IdentityResources.Email(),
+            new IdentityResource()
+            {
+                Name = "employee_info",
+                DisplayName = "Employee information",
+                Description = "Employee information including seniority and status...",
+                UserClaims = new List<string>
+                {
+                    "employment_start",
+                    "seniority",
+                    "contractor",
+                    "api1"
+                }
+            }
         };
 
     public static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]
         {
-            new ApiScope("api1") 
+            new ApiScope()
+            {
+                Name = "myscope",
+                DisplayName = "myscope",
+                Description = "myscope",
+                UserClaims = new List<string>
+                {
+                    "api1"
+                },
+            },
+            new ApiScope("myscope2")
+            {
+                UserClaims = new List<string>()
+                {
+                    "website"
+                },
+                Required = true,
+                Name = "myscope2",
+                DisplayName = "myscope2"
+            },
+            new ApiScope()
+            {
+                Name = "role",
+                DisplayName = "role",
+                Description = "role",
+                UserClaims = new List<string>
+                {
+                    "role"
+                },
+            },
         };
     
     public static IEnumerable<Client> Clients =>
@@ -47,13 +89,16 @@ public static class Config
                 IdentityTokenLifetime = 65,
                 RequirePkce = true,
                 RequireConsent = true,
+                AlwaysIncludeUserClaimsInIdToken  = true,
+                AlwaysSendClientClaims = true,
                 AllowedScopes = 
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
                     IdentityServerConstants.StandardScopes.Email,
-                    "api1",
+                    "myscope",
                     IdentityServerConstants.StandardScopes.OfflineAccess,
+                    "role"
                 }
             }
         };
